@@ -1,0 +1,7 @@
+.histfile
+tags
+*.log
+*.swp
+node_modules/
+tags.lock
+.extra

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+if [ -f $(brew --prefix)/etc/bash_completion.d/kubectl ]; then
+  . $(brew --prefix)/etc/bash_completion.d/kubectl
+fi
+
