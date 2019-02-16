@@ -128,3 +128,8 @@ export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
 export PS2;
+
+# kube-ps1
+source /home/yoshwata/bin/kube-ps1.sh
+PS1='$(kube_ps1)'$PS1
+kubeoff
