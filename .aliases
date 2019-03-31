@@ -49,3 +49,4 @@ cdll () {
 }
 alias cd="cdll"
 
+alias sh="sh -l"
