@@ -1,7 +1,7 @@
 # terminal
 export HISTSIZE=50000
 export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
-export HISTCONTROL=ignoredups
+export HISTCONTROL=erasedups
 
 # go
 export PATH=$PATH:/usr/local/go/bin
