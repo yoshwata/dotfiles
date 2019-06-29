@@ -66,8 +66,29 @@ function share_history {
     history -c
     history -r
 }
-PROMPT_COMMAND='share_history'
+
+PROMPT_COMMAND_HISTORY='share_history'
 shopt -u histappend
+
+dispatch () {
+        export EXIT_STATUS="$?" # save error code of previous command
+
+        local f
+        for f in ${!PROMPT_COMMAND_*}; do # get list of start with PROMPT_COMMAND
+            eval "${!f}" # indirect reference
+        done
+        unset f
+}
+export PROMPT_COMMAND="dispatch"
+
+prompt_exit () {
+	if [ $EXIT_STATUS != 0 ]; then
+		exitStyle="${2}"      # Add red if exit code non 0
+	else
+		exitStyle="${1}"
+	fi
+	echo -e ${exitStyle}${EXIT_STATUS}
+}
 
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
@@ -117,6 +138,8 @@ fi;
 PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1+="\[${bold}\]\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
+PS1+="\[${white}\] ex ";
+PS1+="\$(prompt_exit \"\[${green}\]\" \"\[${red}\]\")"; # username
 PS1+="\[${white}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
@@ -130,6 +153,6 @@ PS2="\[${yellow}\]→ \[${reset}\]";
 export PS2;
 
 # kube-ps1
-source ~/bin/kube-ps1.sh
-PS1='$(kube_ps1)'$PS1
-kubeoff
+# source ~/bin/kube-ps1.sh
+# PS1='$(kube_ps1)'$PS1
+# kubeoff
