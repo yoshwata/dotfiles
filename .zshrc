@@ -150,5 +150,5 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.chefdk/gem/ruby/2.4.0/bin:$PATH"
 
 # go setting
-export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:/usr/local/go/bin
 #

@@ -3,14 +3,29 @@ export HISTSIZE=50000
 export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=erasedups
 
-# go
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+# anyenv
+eval "$(anyenv init -)"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# go
+# export PATH=$PATH:/usr/local/go/bin
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOPATH/bin
+
+export PATH="$HOME/.anyenv/envs/goenv/bin:$PATH"
+# export GOENV_ROOT="$HOME/.goenv
+# export PATH="$GOENV_ROOT/bin:$PATH
+# eval "$(goenv init -)"
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 # kube
 export KUBE_EDITOR="vim"
+
+# node
+export PATH="$HOME/.anyenv/bin:$PATH"
+export PATH="$HOME/.anyenv/envs/nodenv/bin:$PATH"
+eval "$(nodenv init -)"

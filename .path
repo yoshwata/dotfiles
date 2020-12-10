@@ -11,6 +11,9 @@ export PATH="$HOME/bin:$PATH";
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+# gvm
+# source /home/yoshwata/.gvm/scripts/gvm
+
 # chef
 export PATH="$HOME/.chefdk/gem/ruby/2.4.0/bin:$PATH"
 
